@@ -1,0 +1,40 @@
+<html>
+
+<style>
+  body { background: #fff; padding: 0px; margin: 0px; text-align: center; font-family: sans-serif;}
+  .wide { max-width: 700px;  margin: 20px; margin: auto;}
+  .narrow { max-width: 200px; margin: 20px; margin: auto;}
+  .dark-bg { background: #222; padding: 20px; width: 97% }
+</style>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script type="text/javascript" src="dist/Chartistica.min.js"></script>
+
+  <h1>Chartistica Test</h1>
+
+  <div class="dark-bg">
+      <canvas class="chartistica wide" data-chart="bar" data-url="/testjson/example.json" data-theme="night_gray"></canvas>
+      <canvas class="chartistica wide" data-chart="bar" data-url="/testjson/example2.json" data-theme="night_gray"></canvas>
+      <canvas class="chartistica wide" data-chart="bar" data-url="/testjson/example2.json" data-theme="pink"></canvas>
+  </div>
+
+  <div>
+      <canvas class="chartistica wide" data-chart="bar" data-url="/testjson/example.json" data-theme="blue"></canvas>
+      <canvas class="chartistica wide" data-chart="line" data-url="/testjson/example.json" data-theme="blue"></canvas>
+      <canvas class="chartistica wide" data-chart="filledline" data-url="/testjson/example.json" data-theme="blue"></canvas>
+      <canvas class="chartistica wide" data-chart="line" data-url="/testjson/example2.json" data-theme="pink"></canvas>
+
+
+      <canvas class="chartistica narrow" data-chart="sparklebar" data-url="/testjson/example.json" data-theme="blue"></canvas>
+      <canvas class="chartistica narrow" data-chart="sparklebar" data-url="/testjson/example.json" data-theme="pink"></canvas>
+      <canvas class="chartistica narrow" data-chart="sparklebar" data-url="/testjson/example2.json" data-theme="blue"></canvas>
+      <canvas class="chartistica narrow" data-chart="filledsparkleline" data-url="/testjson/example.json" data-theme="gray"></canvas>
+
+
+  </div>
+
+  <script>
+   Chartistica.render();
+  </script>
+
+</html>
