@@ -1,5 +1,5 @@
 /*!
- * Chartistica v0.1.2
+ * Chartistica v0.1.3
  * (c) 2020 Wolfgang Hauptfleisch <dev@augmentedlogic.com>
  * Released under the MIT License
  */
@@ -32,6 +32,20 @@ var Chartistica = {
     themes['green'][2]['backgroundColor'] = "rgba(79,157,102, 0.9)";
     themes['green'][2]['borderColor'] = "rgba(79,157,102, 0.9)";
 
+
+    themes['red'] = [];
+    themes['red']['gridColor'] = "rgba(100,100,100,1)";
+    themes['red']['fontColor'] = "rgba(171,171,171,1)";
+    themes['red'][0] = [];
+    themes['red'][0]['backgroundColor'] = "rgba(216,49,40, 0.9)";
+    themes['red'][0]['borderColor'] = "rgba(216,49,40, 0.9)";
+    themes['red'][1] = [];
+    themes['red'][1]['backgroundColor'] = "rgba(219,69,61, 0.9)";
+    themes['red'][1]['borderColor'] = "rgba(219,69,61, 0.9)";
+    themes['red'][2] = [];
+    themes['red'][2]['backgroundColor'] = "rgba(223,90,82, 0.9)";
+    themes['red'][2]['borderColor'] = "rgba(223,90,82, 0.9)";
+
     themes['blue'] = [];
     themes['blue']['gridColor'] = "rgba(100,100,100,1)";
     themes['blue']['fontColor'] = "rgba(171,171,171,1)";
@@ -62,9 +76,11 @@ var Chartistica = {
     themes['pink'][0]['backgroundColor'] = "rgba(204, 129, 203, 0.6)";
     themes['pink'][0]['borderColor'] = "rgba(204, 129, 203, 0.9)";
     themes['pink'][1] = [];
-    themes['pink'][1]['backgroundColor'] = "rgba(204, 129, 103, 0.6)";
-    themes['pink'][1]['borderColor'] = "rgba(204, 129, 103, 0.9)";
-
+    themes['pink'][1]['backgroundColor'] = "rgba(204,0,102, 0.6)";
+    themes['pink'][1]['borderColor'] = "rgba(204,0,102, 0.9)";
+    themes['pink'][2] = [];
+    themes['pink'][2]['backgroundColor'] = "rgba(255,0,128, 0.6)";
+    themes['pink'][2]['borderColor'] = "rgba(255,0,128, 0.9)";
 
 
     themes['night_gray'] = [];
