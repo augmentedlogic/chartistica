@@ -1,5 +1,5 @@
 /*!
- * Chartistica v0.1
+ * Chartistica v0.1.2
  * (c) 2020 Wolfgang Hauptfleisch <dev@augmentedlogic.com>
  * Released under the MIT License
  */
@@ -19,6 +19,18 @@ var Chartistica = {
     themes['gray'][1]['backgroundColor'] = "rgba(160, 160, 160, 0.9)";
     themes['gray'][1]['borderColor'] = "rgba(160, 160, 160, 0.9)";
 
+    themes['green'] = [];
+    themes['green']['gridColor'] = "rgba(100,100,100,1)";
+    themes['green']['fontColor'] = "rgba(171,171,171,1)";
+    themes['green'][0] = [];
+    themes['green'][0]['backgroundColor'] = "rgba(42,126, 67, 0.9)";
+    themes['green'][0]['borderColor'] = "rgba(42,126, 67, 0.9)";
+    themes['green'][1] = [];
+    themes['green'][1]['backgroundColor'] = "rgba(126,189,145, 0.9)";
+    themes['green'][1]['borderColor'] = "rgba(126,189,145, 0.9)";
+    themes['green'][2] = [];
+    themes['green'][2]['backgroundColor'] = "rgba(79,157,102, 0.9)";
+    themes['green'][2]['borderColor'] = "rgba(79,157,102, 0.9)";
 
     themes['blue'] = [];
     themes['blue']['gridColor'] = "rgba(100,100,100,1)";
