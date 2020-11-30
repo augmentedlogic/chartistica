@@ -1,5 +1,5 @@
 /*!
- * Chartistica v0.1.3
+ * Chartistica v0.1.5
  * (c) 2020 Wolfgang Hauptfleisch <dev@augmentedlogic.com>
  * Released under the MIT License
  */
@@ -96,12 +96,14 @@ var Chartistica = {
     return themes;
   },
 
-  drawChart: function(ctx_name, chart_type, theme, data)
+  drawChart: function(ctx_name, chart_type, theme, data, legend_setting)
   {
+
 
     theme = typeof theme !== 'undefined' ? theme : 'gray';
     var themes = Chartistica.getThemes();
     var selected_theme = themes[theme];
+    var is_stacked = false;
 
    for (var i = 0; i < data.datasets.length; i++) {
         data.datasets[i].backgroundColor =  selected_theme[i]['backgroundColor'];
@@ -111,6 +113,14 @@ var Chartistica = {
           data.datasets[i].borderWidth = 0;
           data.datasets[i].fill = false;
         }
+
+        if(chart_type == "stackedbar") {
+          data.datasets[i].borderWidth = 0;
+          data.datasets[i].fill = false;
+          chart_type = "bar";
+          is_stacked = true;
+        }
+
         if(chart_type == "line") {
           data.datasets[i].borderWidth = 4;
           data.datasets[i].fill = false;
@@ -118,6 +128,18 @@ var Chartistica = {
         if(chart_type == "filledline") {
           data.datasets[i].borderWidth = 4;
           data.datasets[i].fill = true;
+          chart_type = "line";
+        }
+        if(chart_type == "steppedlinefilled") {
+          data.datasets[i].borderWidth = 4;
+          data.datasets[i].fill = true;
+          data.datasets[i].steppedLine = true;
+          chart_type = "line";
+        }
+        if(chart_type == "steppedline") {
+          data.datasets[i].borderWidth = 4;
+          data.datasets[i].fill = false;
+          data.datasets[i].steppedLine = true;
           chart_type = "line";
         }
         if(chart_type == "pie") {
@@ -131,7 +153,7 @@ var Chartistica = {
    var ctx = document.getElementById(ctx_name);
 
 
-   if(chart_type == "bar" || chart_type == "line") {
+   if(chart_type == "bar" || chart_type == "line" || chart_type == "stackedbar") {
 
    var myChart = new Chart(ctx, {
       type: chart_type,
@@ -143,11 +165,12 @@ var Chartistica = {
         legend: {
             labels: {
                 fontColor: selected_theme['fontColor'],
-                fontSize: 18
+                fontSize: parseInt(legend_setting)
             }
         },
         scales: {
             yAxes: [{
+                stacked: is_stacked,
                 ticks: {
                     fontColor: selected_theme['fontColor'],
                     beginAtZero: true
@@ -158,6 +181,7 @@ var Chartistica = {
                 }
              }],
             xAxes: [{
+                stacked: is_stacked,
                 ticks: {
                     fontColor: selected_theme['fontColor'],
                     beginAtZero: true
@@ -229,6 +253,17 @@ var Chartistica = {
 
    }
 
+   if(chart_type == "radar") {
+
+    var myRadarChart = new Chart(ctx, {
+       type: 'radar',
+       data: {
+         labels: data.labels,
+         datasets: data.datasets,
+       }
+    });
+
+   }
 
    /**
     * draw a simple sparkle line
@@ -328,14 +363,16 @@ var Chartistica = {
        var id = "chartistica-" + i;
            elements[i].id = id;
        var theme = elements[i].getAttribute('data-theme');
-       var url = elements[i].getAttribute('data-url');
+       var url = escape(elements[i].getAttribute('data-url'));
        var chart_type = elements[i].getAttribute('data-chart');
+       var legend_setting = elements[i].getAttribute('data-legend') || 14 ;
+       console.log("legend" + legend_setting);
 
        var xhr = new XMLHttpRequest();
        xhr.onreadystatechange = function() {
           if (xhr.readyState === 4) {
               data = JSON.parse(xhr.responseText);
-              Chartistica.drawChart(id, chart_type, theme, data);
+              Chartistica.drawChart(id, chart_type, theme, data, legend_setting);
           }
        };
        xhr.open('GET', url);
